@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class DressCode extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
                         buttonMoreInfo.setTag(new String[]{
                                 "White Tie",
                                 "• Full-length evening gown (floor-length)\n" +
-                                "• Luxurious fabrics (silk, satin, velvet)\n" +
-                                "• Optional long gloves\n" +
-                                "• Elegant jewelry (diamonds, pearls)\n\n" +
-                                "Occasions:\n" +
-                                "Royal events, state dinners, formal galas"
-                            });
+                                        "• Luxurious fabrics (silk, satin, velvet)\n" +
+                                        "• Optional long gloves\n" +
+                                        "• Elegant jewelry (diamonds, pearls)\n\n" +
+                                        "Occasions:\n" +
+                                        "Royal events, state dinners, formal galas"
+                        });
                         break;
                     case 2: // Semi-Formal
                         imageview.setImageResource(R.drawable.semi);
@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
                         buttonMoreInfo.setTag(new String[]{
                                 "Semi-Formal",
                                 "• Cocktail dress or dressy skirt and blouse\n" +
-                                "• Elegant jumpsuit as an option\n" +
-                                "• Heels or dressy flats\n\n" +
-                                "Occasions:\n" +
-                                "Evening weddings, holiday parties, business dinners"
-                             });
+                                        "• Elegant jumpsuit as an option\n" +
+                                        "• Heels or dressy flats\n\n" +
+                                        "Occasions:\n" +
+                                        "Evening weddings, holiday parties, business dinners"
+                        });
                         break;
                     case 3: // Cocktail
                         imageview.setImageResource(R.drawable.cock);
@@ -74,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
                         buttonMoreInfo.setTag(new String[]{
                                 "Cocktail",
                                 "• Cocktail dress (typically knee-length)\n" +
-                                "• Elegant accessories (jewelry, clutch bag)\n" +
-                                "• Heels or dressy sandals \n\n" +
-                                "Occasions:\n" +
-                                "Cocktail parties, evening events, receptions"
-                             });
+                                        "• Elegant accessories (jewelry, clutch bag)\n" +
+                                        "• Heels or dressy sandals \n\n" +
+                                        "Occasions:\n" +
+                                        "Cocktail parties, evening events, receptions"
+                        });
                         break;
                 }
             }
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 String information = tagData[1];
 
                 // Show an Dialog with the information
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(DressCode.this);
                 builder.setTitle(title) // Dynamically set title
                         .setMessage(information) // Dynamically set message
                         .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
