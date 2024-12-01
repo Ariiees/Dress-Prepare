@@ -18,10 +18,19 @@ public class DressCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dress_code);
 
+        // Initialize Bottom Navigation Buttons
+        ImageView homeButton = findViewById(R.id.homeIcon);
+        ImageView chatButton = findViewById(R.id.aiChatIcon);
+        ImageView weatherButton = findViewById(R.id.weatherIcon);
+        ImageView eventButton = findViewById(R.id.eventAttireIcon);
+        Util.bottomBarJump(this, homeButton, chatButton, weatherButton, eventButton, 4);
+
         // Initialize Views
         Spinner spinner = findViewById(R.id.dressCodeDropdown);
         ImageView imageview = findViewById(R.id.imageview);
         LinearLayout buttonMoreInfo = findViewById(R.id.moreInfoLayout);
+
+
 
         // Define Dropdown Items
         String[] dressCodes = {"Pick an Option", "White Tie", "Semi-Formal", "Cocktail"};
