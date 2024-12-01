@@ -76,8 +76,8 @@
 
         <ImageView
             android:id="@+id/home_background"
-            android:layout_width="410dp"
-            android:layout_height="599dp"
+            android:layout_width="406dp"
+            android:layout_height="752dp"
             android:layout_gravity="center"
             android:contentDescription="home background"
             android:scaleType="centerCrop"
@@ -96,9 +96,10 @@
             android:src="@drawable/home_avatar_base"
             app:layout_constraintBottom_toBottomOf="@id/home_background"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.646" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -153,7 +154,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:contentDescription="AI Chat"
-                android:src="@drawable/chat" />
+                android:src="@drawable/chat_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -178,7 +179,7 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:contentDescription="Weather"
-                android:src="@drawable/weather" />
+                android:src="@drawable/weather_icon" />
 
             <TextView
                 android:layout_width="wrap_content"

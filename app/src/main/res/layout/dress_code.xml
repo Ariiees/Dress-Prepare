@@ -187,7 +187,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:contentDescription="AI Chat"
-                android:src="@drawable/chat" />
+                android:src="@drawable/chat_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -212,7 +212,7 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:contentDescription="Weather"
-                android:src="@drawable/weather" />
+                android:src="@drawable/weather_icon" />
 
             <TextView
                 android:layout_width="wrap_content"

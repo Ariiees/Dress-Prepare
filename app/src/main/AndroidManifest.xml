@@ -21,8 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Home" />
+        <activity android:name=".Chat" />
+        <activity android:name=".Weather" />
         <activity android:name=".DressCode"/>
-        <activity android:name=".Setting"/>
     </application>
 
 </manifest>
