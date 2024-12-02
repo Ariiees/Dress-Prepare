@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Dropdown Menu Example</string>
+    <string name="more_information">More Information</string>
+    <string-array name="dropdown_items">
+        <item>White Tie</item>
+        <item>Black Tie</item>
+        <item>Semi-Formal</item>
+        <item>Cocktail</item>
+    </string-array>
+</resources>
