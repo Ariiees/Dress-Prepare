@@ -1,14 +1,4 @@
-# Dress-Prepare Dress Code Page
-This branch contains the code for Dress Code Page, current mainfest is set to MainActivity.
-
-- [x] Drop Down List
-- [x] More Info Button 
-- [x] Woman Summer Dress Tie
-- [ ] Man Summer Dress Tie (need to combine with setting gender data)
-- [ ] Setting Page
-
-
-## Quick Start on Implementation
+# Quick Start on Implementation
 Go Dress-Prepare/app/src/main/res/drawable to find/add png component
 Go Dress-Prepare/app/src/main/res/layout to add/modify new/existing pages
 Go Dress-Prepare/app/src/main/java/com/example/dresscode to find all our Java class code framwork
