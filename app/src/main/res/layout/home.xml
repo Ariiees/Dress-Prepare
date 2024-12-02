@@ -15,10 +15,7 @@
         android:orientation="horizontal"
         android:padding="1dp">
 
-        <!-- Title -->
-
-        <!-- Profile Icon -->
-
+        <!-- Location -->
         <ImageView
             android:id="@+id/locationIcon"
             android:layout_width="60dp"
@@ -46,6 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Profile Icon -->
         <ImageView
             android:id="@+id/profileIcon"
             android:layout_width="45dp"

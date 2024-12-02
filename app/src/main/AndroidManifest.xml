@@ -25,6 +25,7 @@
         <activity android:name=".Chat" />
         <activity android:name=".Weather" />
         <activity android:name=".DressCode"/>
+        <activity android:name=".Setting"/>
     </application>
 
 </manifest>

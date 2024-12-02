@@ -7,7 +7,7 @@ import android.widget.ImageView;
 public class Util {
 
     public static void bottomBarJump(Context context, ImageView home, ImageView chat, ImageView weather,
-                              ImageView event, int stage) {
+                                     ImageView event, ImageView setting, int stage) {
         /*
         This function adds onclick events to all four buttons of the bottom bar.
 
@@ -41,6 +41,13 @@ public class Util {
         if (stage != 4) {
             event.setOnClickListener(v -> {
                 Intent intent = new Intent(context, DressCode.class);
+                context.startActivity(intent);
+            });
+        }
+
+        if (stage != 5) {
+            setting.setOnClickListener(v -> {
+                Intent intent = new Intent(context, Setting.class);
                 context.startActivity(intent);
             });
         }

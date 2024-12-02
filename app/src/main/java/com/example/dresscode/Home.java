@@ -15,6 +15,7 @@ public class Home extends AppCompatActivity {
         ImageView chatButton = findViewById(R.id.aiChatIcon);
         ImageView weatherButton = findViewById(R.id.weatherIcon);
         ImageView eventButton = findViewById(R.id.eventAttireIcon);
-        Util.bottomBarJump(this, homeButton, chatButton, weatherButton, eventButton, 1);
+        ImageView settingButton = findViewById(R.id.profileIcon);
+        Util.bottomBarJump(this, homeButton, chatButton, weatherButton, eventButton, settingButton, 1);
     }
 }
