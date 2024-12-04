@@ -27,7 +27,7 @@ Sehee
 
 Jiaxin Dong
 - [x] Home Page
-- [x] Util
+- [x] App Framework
 - [ ] Camera
 - [ ] Main
 
