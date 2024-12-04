@@ -42,3 +42,6 @@ Joshua Taing
 
 Saish Padhye
 - [ ] Task 1: AI Chat (Based on Task2: Weather output)
+
+# Video
+Check our current progress [here](https://drive.google.com/file/d/1usHHalKx1eaGP5_iDqU0mag9x3pWFcO7/view?usp=sharing)
