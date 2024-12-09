@@ -34,8 +34,8 @@ Jiaxin Dong
 Yuxin Wang
 - [x] Task 3: Dress Code
 - [x] Setting Page
-- [ ] Account Gender choose
 - [ ] GPS
+- [ ] Screen Reader Compatbility
 
 Joshua Taing
 - [ ] Task 2: Weather (Weather API Based on GPS Location)
