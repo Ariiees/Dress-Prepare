@@ -18,4 +18,8 @@ public class Home extends AppCompatActivity {
         ImageView settingButton = findViewById(R.id.profileIcon);
         Util.bottomBarJump(this, homeButton, chatButton, weatherButton, eventButton, settingButton, 1);
     }
+
+
+
+
 }
