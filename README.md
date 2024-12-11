@@ -19,6 +19,29 @@ The whole project structure is:
 - Chat -> WIP should be ai chating
 - Setting.java -> WIP should be profile page
 
-  
+# Assignment
+Sehee
+- [x] GUI Design
+- [x] Figma Layout
+- [x] All Android Icons and Figure
 
-### We need a camera button that can let user to take a photo of their cloth. Leave a MSG below for ideas.
+Jiaxin Dong
+- [x] Home Page
+- [x] App Framework
+- [ ] Camera
+- [ ] Main
+
+Yuxin Wang
+- [x] Task 3: Dress Code
+- [x] Setting Page
+- [ ] GPS
+- [ ] Screen Reader Compatbility
+
+Joshua Taing
+- [ ] Task 2: Weather (Weather API Based on GPS Location)
+
+Saish Padhye
+- [ ] Task 1: AI Chat (Based on Task2: Weather output)
+
+# Video
+Check our current progress [here](https://drive.google.com/file/d/1usHHalKx1eaGP5_iDqU0mag9x3pWFcO7/view?usp=sharing)
