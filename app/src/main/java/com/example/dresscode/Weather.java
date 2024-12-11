@@ -25,14 +25,20 @@ public class Weather extends AppCompatActivity implements LocationHelper.Locatio
         ImageView settingButton = findViewById(R.id.profileIcon);
         Util.bottomBarJump(this, homeButton, chatButton, weatherButton, eventButton, settingButton, 3);
 
-        // Initialize locationText (Make sure you add a TextView in your weather layout to show location)
+        // Initialize Location elements
         locationText = findViewById(R.id.titleText);
+        ImageView locationIcon = findViewById(R.id.locationIcon);
 
         // Initialize LocationHelper
         locationHelper = new LocationHelper(this);
 
         // Request location permission and fetch location
         locationHelper.requestLocationPermission();
+
+        // Request a location update
+        locationIcon.setOnClickListener(view -> {
+            locationHelper.fetchLocation();
+        });
     }
 
     @Override
