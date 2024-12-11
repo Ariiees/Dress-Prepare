@@ -1,0 +1,84 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:padding="16dp">
+
+    <!-- Chat Display -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:padding="16dp"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/chat_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bot: How can I help you?"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp" />
+    </ScrollView>
+
+    <!-- User Input Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/user_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type your message..."
+            android:background="#E0E0E0"
+            android:padding="10dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:backgroundTint="#6200EE"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/regenerate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regenerate"
+            android:backgroundTint="#03DAC5"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/go_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Back"
+            android:backgroundTint="#FF0266"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</LinearLayout>
