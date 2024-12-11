@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +35,8 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         ImageView checkIcon = findViewById(R.id.home_check);
         TextView temperatureText = findViewById(R.id.home_temperature_text);
 
+        // Initialize Location elements
+        ImageView locationIcon = findViewById(R.id.locationIcon);
         titleText = findViewById(R.id.titleText);
 
         // Initialize LocationHelper
@@ -55,6 +58,11 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         warnIcon.setOnClickListener(navigateToWeather);
         checkIcon.setOnClickListener(navigateToWeather);
         temperatureText.setOnClickListener(navigateToWeather);
+
+        // Request a location update
+        locationIcon.setOnClickListener(view -> {
+            locationHelper.fetchLocation();
+        });
     }
 
     // Method to update the location text in Home

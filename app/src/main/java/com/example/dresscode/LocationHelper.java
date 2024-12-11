@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.widget.Toast;
+
 import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -58,15 +60,16 @@ public class LocationHelper {
                                 String state = address.getAdminArea();
 
                                 updateLocationText(city + ", " + state);
+                                Toast.makeText(context, "Location Update!", Toast.LENGTH_SHORT).show();
                             } else {
-                                updateLocationText("Unable to fetch location");
+                                Toast.makeText(context, "Unable to fetch location", Toast.LENGTH_SHORT).show();
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
-                            updateLocationText("Unable to fetch location");
+                            Toast.makeText(context, "Unable to fetch location", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        updateLocationText("Unable to fetch location");
+                        Toast.makeText(context, "Unable to fetch location", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
