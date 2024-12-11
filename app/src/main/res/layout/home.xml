@@ -21,7 +21,6 @@
             android:layout_width="60dp"
             android:layout_height="63dp"
             android:layout_gravity="end"
-
             android:layout_marginEnd="344dp"
             android:contentDescription="location"
             android:src="@drawable/home_location_icon"
@@ -37,7 +36,7 @@
             android:gravity="start"
             android:text="Newark, DE"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
