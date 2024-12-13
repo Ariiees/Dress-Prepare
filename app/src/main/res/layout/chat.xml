@@ -47,6 +47,7 @@
         <!-- Send Button -->
         <Button
             android:id="@+id/sendButton"
+            android:contentDescription="Button: Send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -57,6 +58,7 @@
         <!-- Alternate Suggestion Button -->
         <Button
             android:id="@+id/alternateSuggestionButton"
+            android:contentDescription="Button: get alternate suggestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFC107"

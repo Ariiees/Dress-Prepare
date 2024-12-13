@@ -33,7 +33,7 @@ public class DressCode extends AppCompatActivity {
 
 
         // Define Dropdown Items
-        String[] dressCodes = {"Pick an Option", "White Tie", "Semi-Formal", "Cocktail"};
+        String[] dressCodes = {"Pick an Option", "White Tie", "Black Tie", "Semi-Formal", "Cocktail", "Casual"};
 
         // Set Up Spinner Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dressCodes);
@@ -49,44 +49,74 @@ public class DressCode extends AppCompatActivity {
                         imageview.setVisibility(View.GONE);
                         buttonMoreInfo.setVisibility(View.GONE);
                         break;
-                    case 1: // White Tie
+                    case 1: // White tie
                         imageview.setImageResource(R.drawable.white_tie);
                         imageview.setVisibility(View.VISIBLE);
                         buttonMoreInfo.setVisibility(View.VISIBLE);
                         buttonMoreInfo.setTag(new String[]{
                                 "White Tie",
-                                "• Full-length evening gown (floor-length)\n" +
-                                        "• Luxurious fabrics (silk, satin, velvet)\n" +
-                                        "• Optional long gloves\n" +
-                                        "• Elegant jewelry (diamonds, pearls)\n\n" +
-                                        "Occasions:\n" +
-                                        "Royal events, state dinners, formal galas"
+                                    "• Formal floor-length gown\n" +
+                                    "• Black jackets with tails\n" +
+                                    "• White vest \n" +
+                                    "• Tuxedo pants \n" +
+                                    "• White bowtie \n" +
+                                    "• Polished dress shoes \n" +
+                                    "• Dazzling jewelry \n" +
+                                    "• Tiara \n" +
+                                    "• Gloves"
                         });
                         break;
-                    case 2: // Semi-Formal
+                    case 2: // Black Tie
+                        imageview.setImageResource(R.drawable.black_tie);
+                        imageview.setVisibility(View.VISIBLE);
+                        buttonMoreInfo.setVisibility(View.VISIBLE);
+                        buttonMoreInfo.setTag(new String[]{
+                                "Black Tie",
+                                    "• Formal to semi-formal floor-length dresses made with quality fabric (velvet, chiffon, silk, lace)\n" +
+                                    "• Well-fitted black or navy suit jacket with a lapel\n" +
+                                    "• Vest\n" +
+                                    "• Black bowtie\n" +
+                                    "• Elegant heels \n" +
+                                    "• Classy dress shoes"
+                        });
+                        break;
+                    case 3: // Semi-Formal
                         imageview.setImageResource(R.drawable.semi);
                         imageview.setVisibility(View.VISIBLE);
                         buttonMoreInfo.setVisibility(View.VISIBLE);
                         buttonMoreInfo.setTag(new String[]{
                                 "Semi-Formal",
-                                "• Cocktail dress or dressy skirt and blouse\n" +
-                                        "• Elegant jumpsuit as an option\n" +
-                                        "• Heels or dressy flats\n\n" +
-                                        "Occasions:\n" +
-                                        "Evening weddings, holiday parties, business dinners"
+                                    "• Dress shirt and slacks with an optional tie\n" +
+                                    "• Skirt and blouse in high-quality material\n" +
+                                    "• A knee-length dress\n" +
+                                    "• Tasteful pantsuit or jumpsuit"
                         });
                         break;
-                    case 3: // Cocktail
+                    case 4: // Cocktail
                         imageview.setImageResource(R.drawable.cock);
                         imageview.setVisibility(View.VISIBLE);
                         buttonMoreInfo.setVisibility(View.VISIBLE);
                         buttonMoreInfo.setTag(new String[]{
                                 "Cocktail",
-                                "• Cocktail dress (typically knee-length)\n" +
-                                        "• Elegant accessories (jewelry, clutch bag)\n" +
-                                        "• Heels or dressy sandals \n\n" +
-                                        "Occasions:\n" +
-                                        "Cocktail parties, evening events, receptions"
+                                    "• Short, flirty cocktail dresses that fall to the knee (flowy or formfitting) or a dressy jumpsuit\n" +
+                                    "• Suit and tie\n" +
+                                    "• Comfortable, dressy shoes\n" +
+                                    "• A stylish jacket"
+                        });
+                        break;
+                    case 5: // Casual
+                        imageview.setImageResource(R.drawable.casual);
+                        imageview.setVisibility(View.VISIBLE);
+                        buttonMoreInfo.setVisibility(View.VISIBLE);
+                        buttonMoreInfo.setTag(new String[]{
+                                "Casual",
+                                    "• Sundresses\n" +
+                                    "• Collared shirts\n" +
+                                    "• Skirts\n" +
+                                    "• Khaki pants\n" +
+                                    "• Sport jackets\n" +
+                                    "• Wedges\n" +
+                                    "• Dressy sandals"
                         });
                         break;
                 }
