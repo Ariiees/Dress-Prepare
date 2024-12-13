@@ -1,23 +1,23 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
-
-    <!-- Example Content -->
 
     <!-- Top App Bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="2dp"
+        tools:ignore="MissingConstraints">
 
         <!-- Location -->
         <ImageView
@@ -30,7 +30,8 @@
             android:contentDescription="location"
             android:src="@drawable/home_location_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/titleText"
@@ -39,13 +40,15 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:gravity="start"
+            android:padding="2dp"
             android:text="Newark, DE"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,TextSizeCheck" />
 
         <!-- Profile Icon -->
         <ImageView
@@ -58,15 +61,129 @@
             android:contentDescription="Profile"
             android:src="@drawable/setting"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout" />
+
+    <!-- Content -->
+    <!-- Top Info Card -->
+    <LinearLayout
+        android:id="@+id/infoCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/infoCard2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature: 25°C"
+                android:textSize="14sp"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/temp_feels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feels Like: 25°C"
+                android:textSize="14sp"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/temp_highlow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="H: 27 L: 23"
+                android:textSize="14sp"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/infoCard3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/uvIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UV Index: 5"
+                android:textSize="14sp"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/infoCard4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/precip_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Precip.: 20%"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/humid_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Humidity: 70%"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/wind_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wind: 10km/h"
+                android:textColor="#121212"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <!-- Bottom Navigation Bar -->
+
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:baselineAligned="false"
         android:elevation="4dp"
         android:orientation="horizontal"
         android:paddingTop="10dp"
@@ -80,14 +197,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/homeIcon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:contentDescription="Home"
-                android:src="@drawable/home_icon" />
+                android:src="@drawable/home_icon"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,7 +215,8 @@
                 android:text="Home"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <!-- AI Chat Button -->
@@ -105,14 +225,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/aiChatIcon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:contentDescription="AI Chat"
-                android:src="@drawable/chat_icon" />
+                android:src="@drawable/chat_icon"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,7 +243,8 @@
                 android:text="AI Chat"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <!-- Weather Button -->
@@ -130,14 +253,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/weatherIcon"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:contentDescription="Weather"
-                android:src="@drawable/weather_icon_activate" />
+                android:src="@drawable/weather_icon_activate"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -146,7 +271,8 @@
                 android:text="Weather"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <!-- Event Attire Button -->
@@ -155,14 +281,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/eventAttireIcon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:contentDescription="Event Attire"
-                android:src="@drawable/dress_icon" />
+                android:src="@drawable/dress_icon"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -171,63 +299,9 @@
                 android:text="Event Attire"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="599dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="599dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="66dp">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <ImageView
-            android:id="@+id/weather_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/weather_info_top" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <ImageView
-            android:id="@+id/weather_graphs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/weather_info_graph" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <Button
-            android:id="@+id/btn_detail"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="See Detailed"
-            android:textColor="#434343"
-            app:backgroundTint="#CACACA"
-            app:cornerRadius="0dp" />
-
-        <Button
-            android:id="@+id/btn_notify"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Notify Me"
-            android:textColor="#434343"
-            app:backgroundTint="#CACACA"
-            app:cornerRadius="0dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
