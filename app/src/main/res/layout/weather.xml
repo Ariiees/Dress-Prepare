@@ -36,7 +36,7 @@
         <TextView
             android:id="@+id/titleText"
             android:layout_width="275dp"
-            android:layout_height="31dp"
+            android:layout_height="35dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:gravity="start"
@@ -87,11 +87,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/infoWeatherIcon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="Weather Icon"
+            android:padding="0dp"
+            app:srcCompat="@drawable/weather_icon"
+            tools:ignore="HardcodedText" />
+
         <LinearLayout
             android:id="@+id/infoCard2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="8dp"
+            android:padding="6dp"
             android:orientation="vertical"
             android:layout_gravity="center">
 
@@ -100,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Temperature: 25°C"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
 
@@ -109,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Feels Like: 25°C"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
 
@@ -118,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="H: 27 L: 23"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
 
@@ -129,14 +139,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:padding="8dp">
+            android:padding="6dp">
 
             <TextView
                 android:id="@+id/uvIndex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="UV Index: 5"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
         </FrameLayout>
@@ -147,13 +157,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="8dp">
+            android:padding="6dp">
 
             <TextView
                 android:id="@+id/precip_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Precip.: 20%"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
 
@@ -162,6 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Humidity: 70%"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
 
@@ -170,6 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Wind: 10km/h"
+                android:textSize="12sp"
                 android:textColor="#121212"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
