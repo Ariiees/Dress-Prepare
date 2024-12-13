@@ -21,7 +21,6 @@
             android:layout_width="60dp"
             android:layout_height="63dp"
             android:layout_gravity="end"
-
             android:layout_marginEnd="344dp"
             android:contentDescription="location"
             android:src="@drawable/home_location_icon"
@@ -37,7 +36,7 @@
             android:gravity="start"
             android:text="Newark, DE"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,39 +64,165 @@
 
     <!-- Content Area -->
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="1dp">
+        android:padding="1dp"
+        android:background="@drawable/gradient_background">
 
         <ImageView
-            android:id="@+id/home_background"
-            android:layout_width="406dp"
-            android:layout_height="752dp"
-            android:layout_gravity="center"
-            android:contentDescription="home background"
-            android:scaleType="centerCrop"
-            android:src="@drawable/home_background"
-            android:visibility="visible"
+            android:id="@+id/home_background_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="home background bottom part"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_background_bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/home_background_moon"
+            android:layout_width="114dp"
+            android:layout_height="114dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="52dp"
+            android:contentDescription="home background moon"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_background_moon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.088"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_background_cloud"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="home background cloud"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_background_top_cloud"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/home_avatar"
             android:layout_width="411dp"
             android:layout_height="484dp"
+            android:layout_marginBottom="43dp"
             android:contentDescription="avatar"
             android:src="@drawable/home_avatar_base"
-            app:layout_constraintBottom_toBottomOf="@id/home_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.646" />
+            app:layout_constraintVertical_bias="0.387" />
+
+        <ImageView
+            android:id="@+id/home_moon"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="68dp"
+            android:layout_marginBottom="84dp"
+            android:contentDescription="moon"
+            android:src="@drawable/home_icon_moon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/home_warning_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="180dp"
+            android:gravity="center"
+            android:text="Today's Warning"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/home_feel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="60dp"
+            android:gravity="center"
+            android:text="Feels like 4°C"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/home_temperature_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="23dp"
+            android:layout_marginBottom="90dp"
+            android:gravity="center"
+            android:text="7°C"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_coat"
+            android:layout_width="75dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="110dp"
+            android:contentDescription="coat"
+            android:src="@drawable/home_icon_coat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_warn"
+            android:layout_width="57dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginBottom="116dp"
+            android:contentDescription="rain"
+            android:src="@drawable/home_icon_warning"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_check"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="77dp"
+            android:layout_marginBottom="56dp"
+            android:contentDescription="rain"
+            android:src="@drawable/home_icon_check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_rain"
+            android:layout_width="57dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginBottom="56dp"
+            android:contentDescription="rain"
+            android:src="@drawable/home_icon_rain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -107,6 +232,7 @@
 
     <!-- Bottom Navigation Bar -->
     <LinearLayout
+        android:id="@+id/home_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"

@@ -8,17 +8,67 @@
     tools:context=".MainActivity">
 
     <!-- Example Content -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/middleLinearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello Chat!!!!"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Chatbot Response TextView -->
+        <TextView
+            android:id="@+id/chatBotResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            android:text="Hello! How can I help you?"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp" />
+
+        <!-- User Input EditText -->
+        <EditText
+            android:id="@+id/userInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your message here"
+            android:padding="12dp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Send Button -->
+        <Button
+            android:id="@+id/sendButton"
+            android:contentDescription="Button: Send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Send"
+            android:background="#2196F3"
+            android:textColor="#FFFFFF" />
+
+        <!-- Alternate Suggestion Button -->
+        <Button
+            android:id="@+id/alternateSuggestionButton"
+            android:contentDescription="Button: get alternate suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFC107"
+            android:text="Get Alternate Suggestion"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
     <!-- Top App Bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
