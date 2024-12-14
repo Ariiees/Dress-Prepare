@@ -60,16 +60,10 @@ public class LocationHelper {
                                 String state = address.getAdminArea();
 
                                 updateLocationText(city + ", " + state);
-                                Toast.makeText(context, "Location Update!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, "Unable to fetch location", Toast.LENGTH_SHORT).show();
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
-                            Toast.makeText(context, "Unable to fetch location", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(context, "Unable to fetch location", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -107,6 +101,7 @@ public class LocationHelper {
         if (context instanceof LocationUpdateListener) {
             LocationUpdateListener listener = (LocationUpdateListener) context;
             listener.updateLocationText(location);
+            Toast.makeText(context, "Location Update!", Toast.LENGTH_SHORT).show();
         }
     }
 
