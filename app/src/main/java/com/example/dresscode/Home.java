@@ -13,6 +13,7 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
 
     private TextView titleText;
     private LocationHelper locationHelper;
+    private ImageView homeAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,9 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         ImageView warnIcon = findViewById(R.id.home_warn);
         ImageView checkIcon = findViewById(R.id.home_check);
         TextView temperatureText = findViewById(R.id.home_temperature_text);
+
+        // Initalize ImageView (updatable according to ChatAI)
+        homeAvatar = findViewById(R.id.home_avatar);
 
         // Initialize Location elements
         ImageView locationIcon = findViewById(R.id.locationIcon);
@@ -64,11 +68,26 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
             locationHelper.fetchLocation();
             Toast.makeText(this, "Location Update!", Toast.LENGTH_SHORT).show();
         });
+
+        updateAvatarBasedOnFlag();
     }
 
     // Method to update the location text in Home
     @Override
     public void updateLocationText(String location) {
         titleText.setText(location); // Update the titleText with location
+    }
+
+    // Method to update the avatar ImageView based on the flag
+    private void updateAvatarBasedOnFlag() {
+        // Retrieve the flag value from SharedPreferences using Util.getFlag
+        int flag = Util.getFlag(this);
+
+        // Update the home_avatar ImageView based on the flag value
+        if (flag == 1) {
+            homeAvatar.setImageResource(R.drawable.style1); // Set style1 image when flag is 0
+        } else if (flag == 2) {
+            homeAvatar.setImageResource(R.drawable.style2); // Set style2 image when flag is 1
+        }
     }
 }

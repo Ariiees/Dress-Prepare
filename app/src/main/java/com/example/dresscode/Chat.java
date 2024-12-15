@@ -18,7 +18,8 @@ public class Chat extends AppCompatActivity {
     private EditText userInput;
     private ImageButton sendButton, regerateButton, visualizeButton;
 
-    private int flag = 0;
+    private String userMessage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +43,12 @@ public class Chat extends AppCompatActivity {
         regerateButton = findViewById(R.id.regenerateButton);
         visualizeButton = findViewById(R.id.visualizeButton);
 
+
         // Handle "Send" button click
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userMessage = userInput.getText().toString().trim();
+                userMessage = userInput.getText().toString().trim();
                 if (!userMessage.isEmpty()) {
                     chatAsk.setText(userMessage);
                     chatAsk.setVisibility(View.VISIBLE);
@@ -57,19 +59,20 @@ public class Chat extends AppCompatActivity {
             }
         });
 
-        // Handle "Send" button click
+        // Handle "Regenerate" button click
         regerateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userMessage = userInput.getText().toString().trim();
+                userMessage = userInput.getText().toString().trim();
                 chatAsk.setText(userMessage);
                 chatAsk.setVisibility(View.VISIBLE);
                 chatAnswer1.setVisibility(View.GONE);
                 chatAnswer2.setVisibility(View.VISIBLE);
-                flag = 1;
             }
+
         });
 
+        // Handle "Visialize" button click
         visualizeButton.setOnClickListener(v -> {
             // Create a dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -83,9 +86,10 @@ public class Chat extends AppCompatActivity {
             Button applyButton = dialogView.findViewById(R.id.applyButton);
             Button cancelButton = dialogView.findViewById(R.id.cancelButton);
 
+            int flag = Util.getFlag(this);
             if (flag == 0) {
                 imageView.setImageResource(R.drawable.style1);
-            } else {
+            } else if (flag == 1) {
                 imageView.setImageResource(R.drawable.style2);
             }
 
@@ -99,6 +103,12 @@ public class Chat extends AppCompatActivity {
                 Toast.makeText(this, "Apply clicked", Toast.LENGTH_SHORT).show();
                 dialog.dismiss(); // Close the dialog
                 // TOD0: Link with Home
+                int current = Util.getFlag(this);
+                if (current == 0){
+                    Util.setFlag(Chat.this, 1);
+                } else if (current == 1){
+                    Util.setFlag(Chat.this, 2);
+                }
             });
 
             cancelButton.setOnClickListener(cancelView -> {

@@ -2,9 +2,13 @@ package com.example.dresscode;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.ImageView;
 
 public class Util {
+
+    private static final String PREFS_NAME = "AppPrefs"; // SharedPreferences name
+    private static final String FLAG_KEY = "flag"; // Key for flag value
 
     public static void bottomBarJump(Context context, ImageView home, ImageView chat, ImageView weather,
                                      ImageView event, ImageView setting, int stage) {
@@ -51,6 +55,20 @@ public class Util {
                 context.startActivity(intent);
             });
         }
+    }
+
+    // Method to set the flag value using SharedPreferences
+    public static void setFlag(Context context, int flag) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(FLAG_KEY, flag); // Store the flag value
+        editor.apply(); // Commit the changes
+    }
+
+    // Method to get the flag value using SharedPreferences
+    public static int getFlag(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(FLAG_KEY, 0); // Default value is 0 if not set
     }
 
 }

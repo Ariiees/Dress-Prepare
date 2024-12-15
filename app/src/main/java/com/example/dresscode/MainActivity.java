@@ -20,5 +20,7 @@ public class MainActivity extends AppCompatActivity {
             finish(); // Close MainActivity so it's not in the back stack
         }, 2000); // 2000 milliseconds = 2 seconds
 
+        Util.setFlag(MainActivity.this, 0);
+
     }
 }
