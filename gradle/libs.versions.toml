@@ -11,6 +11,7 @@ playServicesLocation = "21.3.0"
 kotlin = "2.1.0"
 okhttp = "4.12.0"
 mpandroidchart = "v3.1.0"
+protoliteWellKnownTypes = "18.0.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,6 +25,7 @@ play-services-location = { group = "com.google.android.gms", name = "play-servic
 # For weather.
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchart" }
+protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -19,7 +19,7 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 
-class Weather : AppCompatActivity() {
+class Weather : AppCompatActivity(), LocationHelper.LocationUpdateListener {
 
     private lateinit var titleTextView: TextView
     private lateinit var temperatureTextView: TextView
@@ -32,6 +32,7 @@ class Weather : AppCompatActivity() {
     private lateinit var tempLineChart: LineChart
     private lateinit var humidityLineChart: LineChart
     private lateinit var windSpeedLineChart: LineChart
+    private lateinit var locationHelper: LocationHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,19 +73,33 @@ class Weather : AppCompatActivity() {
         humidityTextView = findViewById(R.id.humid_text)
         windspeedTextView = findViewById(R.id.wind_text)
 
-        // Set initial weather data
-        fetchWeatherData("Newark", 39.6837, -75.7497)
 
-        // Set listener to update location
-        titleTextView.setOnClickListener {
-            showLocationInputDialog()
-        }
+        locationHelper = LocationHelper(this)
+        locationHelper.requestLocationPermission()
+
+        // Fetch the current GPS location
+        locationHelper.getGPSLocation(object : LocationHelper.LocationCallback {
+            override fun onLocationFetched(latitude: Double, longitude: Double) {
+                if (!latitude.isNaN() && !longitude.isNaN()) {
+                    fetchWeatherData(latitude, longitude)
+                } else {
+                    Toast.makeText(this@Weather, "Unable to fetch location", Toast.LENGTH_SHORT).show()
+                    fetchWeatherData(39.6837, -75.7497) //Default is Newark,DE
+                }
+            }
+        })
+//        // Set listener to update location
+//        titleTextView.setOnClickListener {
+//            showLocationInputDialog()
+//        }
+    }
+
+    override fun updateLocationText(location: String) {
+        titleTextView.text = location // Update the titleTextView with the location
     }
 
     @Suppress("SameParameterValue")
-    private fun fetchWeatherData(location: String, latitude: Double, longitude: Double) {
-        // Note: latitude & longitude never changes, might add real geocoding who knows.
-        // Technically dynamic latitude and longitude. Defaults to Newark, DE, USA.
+    private fun fetchWeatherData(latitude: Double, longitude: Double) {
         val url = "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_probability_max,wind_speed_10m_max&timezone=America%2FNew_York&models=gfs_seamless"
 
         val client = OkHttpClient()
@@ -118,7 +133,6 @@ class Weather : AppCompatActivity() {
                     //val windSpeedMax = dailyWeather.getJSONArray("wind_speed_10m_max").getDouble(0)
 
                     runOnUiThread {
-                        titleTextView.text = location
                         temperatureTextView.text = "Temperature: $temperature°C"
                         tempFeelsTextView.text = "Feels Like: $apparentTemperature°C"
                         tempHLTextView.text = "H: $maxTemp°C L: $minTemp°C"
@@ -204,25 +218,25 @@ class Weather : AppCompatActivity() {
         return labels
     }
 
-    private fun showLocationInputDialog() {
-        val editText = EditText(this)
-        editText.hint = "Enter location"
-
-        AlertDialog.Builder(this)
-            .setTitle("Change Location")
-            .setView(editText)
-            .setPositiveButton("OK") { _, _ ->
-                val newLocation = editText.text.toString()
-                if (newLocation.isNotBlank()) {
-                    // Replace with real geocoding to get latitude and longitude
-                    val latitude = 39.6837 // Placeholder
-                    val longitude = -75.7497 // Placeholder
-                    fetchWeatherData(newLocation, latitude, longitude)
-                } else {
-                    Toast.makeText(this, "Location cannot be empty", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
-    }
+//    private fun showLocationInputDialog() {
+//        val editText = EditText(this)
+//        editText.hint = "Enter location"
+//
+//        AlertDialog.Builder(this)
+//            .setTitle("Change Location")
+//            .setView(editText)
+//            .setPositiveButton("OK") { _, _ ->
+//                val newLocation = editText.text.toString()
+//                if (newLocation.isNotBlank()) {
+//                    // Replace with real geocoding to get latitude and longitude
+//                    val latitude = 39.6837 // Placeholder
+//                    val longitude = -75.7497 // Placeholder
+//                    fetchWeatherData(latitude, longitude)
+//                } else {
+//                    Toast.makeText(this, "Location cannot be empty", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//            .setNegativeButton("Cancel", null)
+//            .show()
+//    }
 }

@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.okhttp)
     implementation(libs.mpandroidchart)
+    implementation(libs.protolite.well.known.types)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
