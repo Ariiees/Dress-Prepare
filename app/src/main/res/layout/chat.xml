@@ -1,82 +1,19 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <!-- Example Content -->
-    <LinearLayout
-        android:id="@+id/middleLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Chatbot Response TextView -->
-        <TextView
-            android:id="@+id/chatBotResponse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            android:padding="16dp"
-            android:textColor="@android:color/white"
-            android:text="Hello! How can I help you?"
-            android:layout_marginBottom="16dp"
-            android:textSize="16sp" />
-
-        <!-- User Input EditText -->
-        <EditText
-            android:id="@+id/userInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Type your message here"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="8dp"
-            android:textSize="14sp"
-            android:layout_marginTop="8dp" />
-
-        <!-- Send Button -->
-        <Button
-            android:id="@+id/sendButton"
-            android:contentDescription="Button: Send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Send"
-            android:background="#2196F3"
-            android:textColor="#FFFFFF" />
-
-        <!-- Alternate Suggestion Button -->
-        <Button
-            android:id="@+id/alternateSuggestionButton"
-            android:contentDescription="Button: get alternate suggestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFC107"
-            android:text="Get Alternate Suggestion"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <!-- Top App Bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:gravity="center_vertical"
+        android:padding="16dp">
 
         <!-- Title -->
         <TextView
@@ -86,10 +23,11 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="AI Chat"
+            android:text="Event Attire"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:contentDescription="Event Attire"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -108,18 +46,161 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray" />
+
+
+    <!-- Content Area -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="13dp">
+
+        <!-- Chat Area -->
+        <ScrollView
+            android:id="@+id/chatScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@+id/inputContainer"
+            android:layout_alignParentTop="true"
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/inputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Container for Chat Messages -->
+            <LinearLayout
+                android:id="@+id/chatContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Begin -->
+                <TextView
+                    android:id="@+id/chatbegin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bubble_left_tail"
+                    android:text="Hello! How can I help you?"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:padding="16dp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/chatask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bubble_right_tail"
+                    android:padding="16dp"
+                    android:layout_gravity="end"
+                    android:text="What should I wear for today's weather?"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/chatanswer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bubble_left_tail"
+                    android:padding="16dp"
+                    android:text="Suggested Clothing:\n
+•Warm sweater or long-sleeve shirt\n
+•Light to medium jacket\n
+•Comfortable jeans or pants\n
+•Closed-toe shoes"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/chatanswer2"
+                    android:layout_width="283dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bubble_left_tail"
+                    android:padding="16dp"
+                    android:text="Suggested Clothing:\n
+•Long-sleeve thermal top or base layer\n
+•Quilted vest over a sweater\n
+•Comfortable leggings or thicker trousers Scarf\n
+•Low-cut boots or high-top sneakers "
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </ScrollView>
+
+
+
+        <!-- Input Container -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/inputContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="-3dp">
+
+
+
+            <!-- Input Field -->
+            <EditText
+                android:id="@+id/inputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Type your message..."
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Send Button -->
+            <ImageButton
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Send"
+                android:src="@drawable/chat_icon_send"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray" />
+
     <!-- Bottom Navigation Bar -->
     <LinearLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:elevation="4dp"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:paddingTop="10dp">
 
         <!-- Home Button -->
         <LinearLayout
@@ -168,7 +249,7 @@
                 android:text="AI Chat"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <!-- Weather Button -->
@@ -193,7 +274,7 @@
                 android:text="Weather"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <!-- Event Attire Button -->
@@ -218,8 +299,7 @@
                 android:text="Event Attire"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
