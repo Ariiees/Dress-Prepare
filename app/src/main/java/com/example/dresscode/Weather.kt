@@ -1,19 +1,28 @@
+@file:Suppress("UnusedImport")
+
 package com.example.dresscode
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.ImageView
+import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import okhttp3.*
+import com.example.dresscode.LocationHelper.LocationUpdateListener
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 
-class Weather : AppCompatActivity() {
+class Weather : AppCompatActivity(), LocationUpdateListener {
 
+    private var locationHelper: LocationHelper? = null
     private lateinit var titleTextView: TextView
     private lateinit var temperatureTextView: TextView
     private lateinit var tempFeelsTextView: TextView
@@ -42,6 +51,10 @@ class Weather : AppCompatActivity() {
             settingButton,
             3
         )
+        val locationIcon = findViewById<ImageView>(R.id.locationIcon)
+
+        // Set initial weather data
+        fetchWeatherData("Newark, DE", 39.6837, -75.7497)
 
         // Info card elements
         titleTextView = findViewById(R.id.titleText)
@@ -53,13 +66,20 @@ class Weather : AppCompatActivity() {
         humidityTextView = findViewById(R.id.humid_text)
         windspeedTextView = findViewById(R.id.wind_text)
 
-        // Set initial weather data
-        fetchWeatherData("Newark", 39.6837, -75.7497)
+        // Initialize LocationHelper
+        locationHelper = LocationHelper(this)
+        // Request location permission
+        locationHelper!!.requestLocationPermission()
+
+        // Request a location update
+        locationIcon.setOnClickListener {
+            locationHelper!!.fetchLocation()
+        }
 
         // Set listener to update location
-        titleTextView.setOnClickListener {
-            showLocationInputDialog()
-        }
+        //titleTextView.setOnClickListener {
+        //    showLocationInputDialog()
+        //}
     }
 
     @Suppress("SameParameterValue")
@@ -96,6 +116,7 @@ class Weather : AppCompatActivity() {
                     val minTemp = dailyWeather.getJSONArray("temperature_2m_min").getDouble(0)
                     val uvIndexMax = dailyWeather.getJSONArray("uv_index_max").getDouble(0)
                     val precipitationMax = dailyWeather.getJSONArray("precipitation_probability_max").getInt(0)
+                    val weatherCode = dailyWeather.getJSONArray("weather_code").getInt(0)
                     //val windSpeedMax = dailyWeather.getJSONArray("wind_speed_10m_max").getDouble(0)
 
                     runOnUiThread {
@@ -107,12 +128,14 @@ class Weather : AppCompatActivity() {
                         precipitationTextView.text = "Precip.: $precipitationMax%"
                         humidityTextView.text = "Humidity: $relHumidity%"
                         windspeedTextView.text = "Wind: $windSpeed km/h"
+                        updateWeatherIcon(weatherCode) // Update the weather icon
                     }
                 }
             }
         })
     }
 
+    @Suppress("unused")
     private fun showLocationInputDialog() {
         val editText = EditText(this)
         editText.hint = "Enter location"
@@ -133,5 +156,27 @@ class Weather : AppCompatActivity() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+
+    private fun updateWeatherIcon(weatherCode: Int) {
+        val weatherIcon = findViewById<ImageView>(R.id.infoWeatherIcon)
+
+        val iconRes = when (weatherCode) {
+            0 -> R.drawable.weather_sunny
+            1, 2 -> R.drawable.weather_partly_cloudy
+            3 -> R.drawable.weather_cloudy
+            45, 48 -> R.drawable.weather_fog
+            51, 53, 55 -> R.drawable.weather_rain_light
+            61, 63, 65 -> R.drawable.weather_rain_heavy
+            71, 73, 75 -> R.drawable.weather_snow
+            95 -> R.drawable.weather_thunderstorms
+            else -> R.drawable.weather_sunny
+        }
+
+        weatherIcon.setImageResource(iconRes)
+    }
+
+    override fun updateLocationText(location: String?) {
+        titleTextView.text = location
     }
 }
