@@ -62,6 +62,7 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         // Request a location update
         locationIcon.setOnClickListener(view -> {
             locationHelper.fetchLocation();
+            Toast.makeText(this, "Location Update!", Toast.LENGTH_SHORT).show();
         });
     }
 

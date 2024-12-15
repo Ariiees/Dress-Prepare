@@ -101,7 +101,6 @@ public class LocationHelper {
         if (context instanceof LocationUpdateListener) {
             LocationUpdateListener listener = (LocationUpdateListener) context;
             listener.updateLocationText(location);
-            Toast.makeText(context, "Location Update!", Toast.LENGTH_SHORT).show();
         }
     }
 
