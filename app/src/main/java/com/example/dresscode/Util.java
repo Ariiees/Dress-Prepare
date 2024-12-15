@@ -9,6 +9,8 @@ public class Util {
 
     private static final String PREFS_NAME = "AppPrefs"; // SharedPreferences name
     private static final String FLAG_KEY = "flag"; // Key for flag value
+    private static final String TEMP_KEY = "temperature"; // Key for temperature data
+    private static final String FEEL_KEY = "apparentTemperature"; // Key for apparent temperature data
 
     public static void bottomBarJump(Context context, ImageView home, ImageView chat, ImageView weather,
                                      ImageView event, ImageView setting, int stage) {
@@ -69,6 +71,34 @@ public class Util {
     public static int getFlag(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(FLAG_KEY, 0); // Default value is 0 if not set
+    }
+
+    // Method to store temperature in SharedPreferences
+    public static void setTemperature(Context context, String temperature) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TEMP_KEY, temperature); // Store the temperature
+        editor.apply(); // Commit the changes
+    }
+
+    // Method to retrieve temperature from SharedPreferences
+    public static String getTemperature(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(TEMP_KEY, "7°C"); // Default value if not set
+    }
+
+    // Method to store apparent temperature (feels like) in SharedPreferences
+    public static void setApparentTemperature(Context context, String apparentTemperature) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(FEEL_KEY, apparentTemperature); // Store the apparent temperature
+        editor.apply(); // Commit the changes
+    }
+
+    // Method to retrieve apparent temperature from SharedPreferences
+    public static String getApparentTemperature(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(FEEL_KEY, "Feels like 4°C"); // Default value if not set
     }
 
 }

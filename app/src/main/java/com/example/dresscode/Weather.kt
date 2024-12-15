@@ -1,12 +1,10 @@
 package com.example.dresscode
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.ImageView
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.LineChart
@@ -83,7 +81,6 @@ class Weather : AppCompatActivity(), LocationHelper.LocationUpdateListener {
                 if (!latitude.isNaN() && !longitude.isNaN()) {
                     fetchWeatherData(latitude, longitude)
                 } else {
-                    Toast.makeText(this@Weather, "Unable to fetch location", Toast.LENGTH_SHORT).show()
                     fetchWeatherData(39.6837, -75.7497) //Default is Newark,DE
                 }
             }
@@ -131,6 +128,10 @@ class Weather : AppCompatActivity(), LocationHelper.LocationUpdateListener {
                     val uvIndexMax = dailyWeather.getJSONArray("uv_index_max").getDouble(0)
                     val precipitationMax = dailyWeather.getJSONArray("precipitation_probability_max").getInt(0)
                     //val windSpeedMax = dailyWeather.getJSONArray("wind_speed_10m_max").getDouble(0)
+
+                    // Store the values using Util (will update the home page)
+                    Util.setTemperature(this@Weather, "$temperature°C")
+                    Util.setApparentTemperature(this@Weather, "Feels Like: $apparentTemperature°C")
 
                     runOnUiThread {
                         temperatureTextView.text = "Temperature: $temperature°C"

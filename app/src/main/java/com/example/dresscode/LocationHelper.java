@@ -16,8 +16,8 @@ import java.util.List;
 
 public class LocationHelper {
 
-    private Context context;
-    private FusedLocationProviderClient fusedLocationClient;
+    private final Context context;
+    private final FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     public LocationHelper(Context context) {

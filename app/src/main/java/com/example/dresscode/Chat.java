@@ -88,9 +88,9 @@ public class Chat extends AppCompatActivity {
 
             int flag = Util.getFlag(this);
             if (flag == 0) {
-                imageView.setImageResource(R.drawable.style1);
+                imageView.setImageResource(R.drawable.style1_chat);
             } else if (flag == 1) {
-                imageView.setImageResource(R.drawable.style2);
+                imageView.setImageResource(R.drawable.style2_chat);
             }
 
             // Create and show the dialog

@@ -14,6 +14,8 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
     private TextView titleText;
     private LocationHelper locationHelper;
     private ImageView homeAvatar;
+    private TextView homeTemperatureText;
+    private TextView homeFeelText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,10 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         ImageView rainIcon = findViewById(R.id.home_rain);
         ImageView warnIcon = findViewById(R.id.home_warn);
         ImageView checkIcon = findViewById(R.id.home_check);
-        TextView temperatureText = findViewById(R.id.home_temperature_text);
+
+        // Initialize Temperature text
+        homeTemperatureText = findViewById(R.id.home_temperature_text);
+        homeFeelText = findViewById(R.id.home_feel_text);
 
         // Initalize ImageView (updatable according to ChatAI)
         homeAvatar = findViewById(R.id.home_avatar);
@@ -49,6 +54,14 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         // Request location permission
         locationHelper.requestLocationPermission();
 
+        // Retrieve temperature and apparent temperature from SharedPreferences using Util
+        String temperature = Util.getTemperature(this);
+        String apparentTemperature = Util.getApparentTemperature(this);
+
+        // Update the TextViews with the retrieved data
+        homeTemperatureText.setText(temperature);
+        homeFeelText.setText(apparentTemperature);
+
         // Set click listeners to navigate to Weather activity
         View.OnClickListener navigateToWeather = view -> {
             Intent intent = new Intent(Home.this, Weather.class);
@@ -61,7 +74,7 @@ public class Home extends AppCompatActivity implements LocationHelper.LocationUp
         rainIcon.setOnClickListener(navigateToWeather);
         warnIcon.setOnClickListener(navigateToWeather);
         checkIcon.setOnClickListener(navigateToWeather);
-        temperatureText.setOnClickListener(navigateToWeather);
+        homeTemperatureText.setOnClickListener(navigateToWeather);
 
         // Request a location update
         locationIcon.setOnClickListener(view -> {

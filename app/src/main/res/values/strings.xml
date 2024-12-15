@@ -2,6 +2,7 @@
     <string name="app_name">Dropdown Menu Example</string>
     <string name="more_information">More Information</string>
     <string name="temp_feelslike">(Feels Like: 27°C)</string>
+    <string name="type_your_message">Type your message...</string>
     <string-array name="dropdown_items">
         <item>White Tie</item>
         <item>Black Tie</item>

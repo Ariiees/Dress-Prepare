@@ -23,11 +23,11 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Event Attire"
+            android:text="AI Chat"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:contentDescription="Event Attire"
+            android:contentDescription="AI Chat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -175,8 +175,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="-3dp">
 
-
-
             <!-- Input Field -->
             <EditText
                 android:id="@+id/userInput"
@@ -186,7 +184,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
-                android:hint="Type your message..."
+                android:hint="@string/type_your_message"
                 android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
