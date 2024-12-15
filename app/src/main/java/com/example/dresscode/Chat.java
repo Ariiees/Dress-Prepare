@@ -1,20 +1,24 @@
 package com.example.dresscode;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Chat extends AppCompatActivity {
-    private TextView chatBotResponse;
+    private TextView chatAsk, chatAnswer1, chatAnswer2;
     private EditText userInput;
-    private Button sendButton, alternateSuggestionButton;
-    private String lastQuestion = "";
-    private String weatherCondition = "";
+    private ImageButton sendButton, regerateButton, visualizeButton;
+
+    private int flag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +34,13 @@ public class Chat extends AppCompatActivity {
         Util.bottomBarJump(this, homeButton, chatButton, weatherButton, eventButton, profileButton, 2);
 
         // Initialize UI components
-        chatBotResponse = findViewById(R.id.chatBotResponse);
+        chatAsk = findViewById(R.id.chatask);
+        chatAnswer1 = findViewById(R.id.chatanswer1);
+        chatAnswer2 = findViewById(R.id.chatanswer2);
         userInput = findViewById(R.id.userInput);
         sendButton = findViewById(R.id.sendButton);
-        alternateSuggestionButton = findViewById(R.id.alternateSuggestionButton);
+        regerateButton = findViewById(R.id.regenerateButton);
+        visualizeButton = findViewById(R.id.visualizeButton);
 
         // Handle "Send" button click
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -41,75 +48,67 @@ public class Chat extends AppCompatActivity {
             public void onClick(View v) {
                 String userMessage = userInput.getText().toString().trim();
                 if (!userMessage.isEmpty()) {
-                    userInput.setText(""); // Clear input field
-                    handleUserMessage(userMessage);
+                    chatAsk.setText(userMessage);
+                    chatAsk.setVisibility(View.VISIBLE);
+                    visualizeButton.setVisibility(View.VISIBLE);
+                    regerateButton.setVisibility(View.VISIBLE);
+                    chatAnswer1.setVisibility(View.VISIBLE);
                 }
             }
         });
 
-        // Handle "Get Alternate Suggestion" button click
-        alternateSuggestionButton.setOnClickListener(new View.OnClickListener() {
+        // Handle "Send" button click
+        regerateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!weatherCondition.isEmpty()) {
-                    provideAlternateSuggestion(weatherCondition);
-                } else {
-                    chatBotResponse.setText("Please tell me the weather condition first to get an alternate suggestion.");
-                }
+                String userMessage = userInput.getText().toString().trim();
+                chatAsk.setText(userMessage);
+                chatAsk.setVisibility(View.VISIBLE);
+                chatAnswer1.setVisibility(View.GONE);
+                chatAnswer2.setVisibility(View.VISIBLE);
+                flag = 1;
             }
         });
 
-    }
-    // Handle the user's message and respond accordingly
-    private void handleUserMessage(String message) {
-        String response;
+        visualizeButton.setOnClickListener(v -> {
+            // Create a dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        // Main flow based on user input
-        if (message.equalsIgnoreCase("what do I wear today?")) {
-            lastQuestion = "weather inquiry";
-            response = "Can you tell me the weather condition? Is it sunny, cold, or raining?";
-        } else if (lastQuestion.equals("weather inquiry")) {
-            weatherCondition = message.toLowerCase();
-            response = getClothingSuggestion(weatherCondition);
-        } else {
-            response = "Sorry, I can only help with clothing suggestions based on weather conditions.";
-        }
+            // Inflate the custom layout for the dialog
+            View dialogView = LayoutInflater.from(this).inflate(R.layout.chat_dialog, null);
+            builder.setView(dialogView);
 
-        chatBotResponse.setText(response);
-    }
+            // Find the image view and buttons in the dialog layout
+            ImageView imageView = dialogView.findViewById(R.id.dialogImageView);
+            Button applyButton = dialogView.findViewById(R.id.applyButton);
+            Button cancelButton = dialogView.findViewById(R.id.cancelButton);
 
-    // Provide clothing suggestions based on weather
-    private String getClothingSuggestion(String condition) {
-        switch (condition) {
-            case "sunny":
-                return "It’s sunny today. Wear a light t-shirt, shorts, and sunglasses.";
-            case "cold":
-                return "It’s cold outside. Wear a sweater, coat, and gloves.";
-            case "raining":
-                return "It’s raining. Wear a waterproof jacket, boots, and carry an umbrella.";
-            default:
-                return "I didn’t understand that. Please say sunny, cold, or raining.";
-        }
-    }
+            if (flag == 0) {
+                imageView.setImageResource(R.drawable.style1);
+            } else {
+                imageView.setImageResource(R.drawable.style2);
+            }
 
-    // Provide alternate suggestions for the weather condition
-    private void provideAlternateSuggestion(String condition) {
-        String alternateResponse;
+            // Create and show the dialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
-        switch (condition) {
-            case "sunny":
-                alternateResponse = "Alternatively, wear a cotton shirt and linen pants with a hat.";
-                break;
-            case "cold":
-                alternateResponse = "Alternatively, layer up with a thermal jacket and a scarf.";
-                break;
-            case "raining":
-                alternateResponse = "Alternatively, wear a raincoat and water-resistant pants.";
-                break;
-            default:
-                alternateResponse = "I don’t have alternate suggestions for that.";
-        }
+            // Set click listeners for buttons
+            applyButton.setOnClickListener(applyView -> {
+                // Handle apply action
+                Toast.makeText(this, "Apply clicked", Toast.LENGTH_SHORT).show();
+                dialog.dismiss(); // Close the dialog
+                // TOD0: Link with Home
+            });
 
-        chatBotResponse.setText(alternateResponse);
+            cancelButton.setOnClickListener(cancelView -> {
+                // Handle cancel action
+                dialog.dismiss(); // Simply close the dialog
+            });
+        });
+
+
+
+
     }
 }
