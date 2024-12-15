@@ -2,12 +2,19 @@ package com.example.dresscode
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.ImageView
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -22,6 +29,9 @@ class Weather : AppCompatActivity() {
     private lateinit var precipitationTextView: TextView
     private lateinit var humidityTextView: TextView
     private lateinit var windspeedTextView: TextView
+    private lateinit var tempLineChart: LineChart
+    private lateinit var humidityLineChart: LineChart
+    private lateinit var windSpeedLineChart: LineChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +43,15 @@ class Weather : AppCompatActivity() {
         val weatherButton = findViewById<ImageView>(R.id.weatherIcon)
         val eventButton = findViewById<ImageView>(R.id.eventAttireIcon)
         val settingButton = findViewById<ImageView>(R.id.profileIcon)
+
+        tempLineChart = findViewById(R.id.tempLineChart)
+        humidityLineChart = findViewById(R.id.humidityLineChart)
+        windSpeedLineChart = findViewById(R.id.windSpeedLineChart)
+
+        setupChart(tempLineChart, "Temperature", "#f8edc0")
+        setupChart(humidityLineChart, "Humidity", "#c0d7fb")
+        setupChart(windSpeedLineChart, "Wind Speed", "#a3b2c1")
+
         Util.bottomBarJump(
             this,
             homeButton,
@@ -107,10 +126,82 @@ class Weather : AppCompatActivity() {
                         precipitationTextView.text = "Precip.: $precipitationMax%"
                         humidityTextView.text = "Humidity: $relHumidity%"
                         windspeedTextView.text = "Wind: $windSpeed km/h"
+
+                        // Populate Graph Data for Temperature
+                        val tempEntries = mutableListOf<Entry>()
+                        val length = Math.min(currentWeather.getJSONArray("temperature_2m").length(), 24) // Limit to 24 hours
+                        for (i in 0 until length) {
+                            val temp = currentWeather.getJSONArray("temperature_2m").getDouble(i).toFloat()
+                            tempEntries.add(Entry(i.toFloat(), temp))
+                        }
+
+                        // Populate Graph Data for Humidity
+                        val humidityEntries = mutableListOf<Entry>()
+                        for (i in 0 until length) {
+                            val humidity = currentWeather.getJSONArray("relative_humidity_2m").getDouble(i).toFloat()
+                            humidityEntries.add(Entry(i.toFloat(), humidity))
+                        }
+
+                        // Populate Graph Data for Wind Speed
+                        val windEntries = mutableListOf<Entry>()
+                        for (i in 0 until length) {
+                            val wind = currentWeather.getJSONArray("wind_speed_10m").getDouble(i).toFloat()
+                            windEntries.add(Entry(i.toFloat(), wind))
+                        }
+
+                        setupLineChart(tempLineChart, tempEntries, "Temperature", "#f8edc0", currentWeather)
+                        setupLineChart(humidityLineChart, humidityEntries, "Humidity", "#c0d7fb", currentWeather)
+                        setupLineChart(windSpeedLineChart, windEntries, "Wind Speed", "#a3b2c1", currentWeather)
                     }
                 }
             }
         })
+    }
+
+    private fun setupChart(chart: LineChart, label: String, color: String) {
+        chart.description.isEnabled = false
+        chart.setTouchEnabled(true)
+        chart.isDragEnabled = true
+        chart.setScaleEnabled(true)
+        chart.setPinchZoom(true)
+        chart.xAxis.setDrawGridLines(false)
+        chart.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
+        chart.axisLeft.isEnabled = false
+        chart.axisRight.isEnabled = false
+        chart.layoutParams.height = 300
+        chart.requestLayout()
+    }
+
+    private fun setupLineChart(chart: LineChart, entries: MutableList<Entry>, label: String, color: String, currentWeather: JSONObject) {
+        val dataSet = LineDataSet(entries, label)
+        dataSet.color = Color.parseColor(color)
+        dataSet.valueTextColor = resources.getColor(R.color.black)
+        dataSet.setDrawFilled(true)
+        dataSet.setDrawCircles(false)
+        dataSet.fillColor = Color.parseColor(color)
+        dataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+
+        // Apply marker to the chart
+//        val marker = CustomMarkerView(this, R.layout.custom_marker_view)
+//        chart.marker = marker
+
+        chart.data = LineData(dataSet)
+        chart.setScaleEnabled(false)
+        chart.legend.isEnabled = false
+        chart.layoutParams.height = 300
+        chart.requestLayout()
+        chart.xAxis.valueFormatter = IndexAxisValueFormatter(getHourLabels(currentWeather))
+        chart.invalidate() // Refresh chart
+    }
+
+    private fun getHourLabels(currentWeather: JSONObject): ArrayList<String> {
+        val labels = ArrayList<String>()
+        for (i in 0 until currentWeather.getJSONArray("temperature_2m").length() step 3) {
+            val hour = i / 3
+            val hourLabel = if (hour < 12) "${hour}AM" else "${hour - 12}PM"
+            labels.add(hourLabel)
+        }
+        return labels
     }
 
     private fun showLocationInputDialog() {
