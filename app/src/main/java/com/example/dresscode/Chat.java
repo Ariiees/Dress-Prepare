@@ -99,10 +99,9 @@ public class Chat extends AppCompatActivity {
 
             // Set click listeners for buttons
             applyButton.setOnClickListener(applyView -> {
-                // Handle apply action
                 Toast.makeText(this, "Apply clicked", Toast.LENGTH_SHORT).show();
                 dialog.dismiss(); // Close the dialog
-                // TOD0: Link with Home
+                // Link with Home
                 int current = Util.getFlag(this);
                 if (current == 0){
                     Util.setFlag(Chat.this, 1);
@@ -112,13 +111,9 @@ public class Chat extends AppCompatActivity {
             });
 
             cancelButton.setOnClickListener(cancelView -> {
-                // Handle cancel action
-                dialog.dismiss(); // Simply close the dialog
+                dialog.dismiss();
             });
         });
-
-
-
 
     }
 }
