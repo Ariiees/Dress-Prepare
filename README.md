@@ -52,7 +52,11 @@ Check our final Video [here](https://drive.google.com/file/d/1usHHalKx1eaGP5_iDq
 
 ## Reference
 [1][GPS Location](https://developers.google.com/android/reference/com/google/android/gms/location/package-summary)
+
 [2][AlertDialog](https://developer.android.com/reference/android/app/AlertDialog)
+
 [3][Weather API](https://open-meteo.com)
+
 [4][Chart library](https://github.com/PhilJay/MPAndroidChart/tree/master)
+
 [5][Dress code](https://www.paperlesspost.com/blog/the-ultimate-guide-to-wedding-dress-codes-and-guest-attire/#)
