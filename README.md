@@ -55,7 +55,7 @@ PS: This is an Android APP Prototype for **Udel CISC 482/682** Final Project.
 Our figma prototype shown [here](https://www.figma.com/proto/rbjHhWBnqQBYRo0ghO191P/Dress-Prepare-team-library?node-id=3353-1150&starting-point-node-id=3318%3A3499&t=NlOzoQFdFFG42OKP-1)
 
 ## Video
-Check our final Video [here](https://drive.google.com/file/d/1usHHalKx1eaGP5_iDqU0mag9x3pWFcO7/view?usp=sharing)
+Check our final Video [here](https://youtu.be/34952RfRBu0)
 
 ## Reference
 [1][GPS Location](https://developers.google.com/android/reference/com/google/android/gms/location/package-summary)
