@@ -18,11 +18,11 @@ PS: This is an Android APP Prototype for **Udel CISC 482/682** Final Project.
   
   Will give you detailed 24h weather condiont based on you current location, which including temperature, humidities, wind directions ect. The temerature and feels like temerature will automatically updated to your home screen.
   
-- Task3: Dress Code  ([demo](https://drive.google.com/file/d/11rUJEj7s40ZoPl0h_PV7rPZWzv2HQYr_/view?usp=sharing))
+- Task3: Dress Code  ([demo](https://drive.google.com/file/d/1NmjaTB3For2spJ28gVeuSkznoxURk-7w/view?usp=sharing))
   
   Will give you dressing suggestions for differnt type of dress code, you could directly visualize them and get detailed information if you click **More Inforamtion** Button.
 
-- Accessiblity: Screen Reader  ([demo](https://drive.google.com/file/d/11L2rLYuup-yPcErRbR-qraAgQ5rgEoPJ/view?usp=sharing))
+- Accessiblity: Screen Reader  ([demo](https://drive.google.com/file/d/1ckhECy1vtG0B-4tZewiy4XlUZM1J3t4F/view?usp=sharing))
   
 - Other: Home
   
