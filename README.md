@@ -14,7 +14,7 @@ PS: This is an Android APP Prototype for **Udel CISC 482/682** Final Project.
 
   Will provide dressing sugesstion according to today's weather conditions, each suggestion could be visualized through **Visualize** Button, and if you choose to apply, it will shown and update your home screen avatar. You could also regenerate another suggestion using **Regenerate** button
   
-- Task2: Weather  ([demo](https://drive.google.com/file/d/11rUJEj7s40ZoPl0h_PV7rPZWzv2HQYr_/view?usp=sharing))
+- Task2: Weather  ([demo]([https://drive.google.com/file/d/11rUJEj7s40ZoPl0h_PV7rPZWzv2HQYr_/view?usp=sharing](https://drive.google.com/file/d/11L2rLYuup-yPcErRbR-qraAgQ5rgEoPJ/view?usp=sharing)))
   
   Will give you detailed 24h weather condiont based on you current location, which including temperature, humidities, wind directions ect. The temerature and feels like temerature will automatically updated to your home screen.
   
