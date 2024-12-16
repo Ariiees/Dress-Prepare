@@ -1,4 +1,8 @@
-# VASTRAM - An Android APP for Dressing Prepare
+<div align="center">
+  <img src="https://github.com/Ariiees/Dress-Prepare/blob/main/img/logo.jpg" alt="logo" width="100">
+</div>
+
+# VASTRAM: An Android APP for Dress Prepare
 Are you struggling with what to wear everday? Are you worried about unexpected weather conditions? Are you not sure about what to wear for some special dress code?
 
 **VASTRAM** will give you detailed weather information based on you current location, and will provide you personalized dress suggestions using AI-Driving. You could also check different dress code dressing examples!
