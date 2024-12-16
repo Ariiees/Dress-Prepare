@@ -10,18 +10,20 @@ Are you struggling with what to wear everday? Are you worried about unexpected w
 PS: This is an Android APP Prototype for **Udel CISC 482/682** Final Project.
 
 ## Functions
-- Task1: AI Chat
+- Task1: AI Chat ([chat demo](https://drive.google.com/file/d/13u_paQ2dCHPHIFcuEfFXeZOV5EB67CHC/view?usp=sharing) and [regenerate demo](https://drive.google.com/file/d/11rUJEj7s40ZoPl0h_PV7rPZWzv2HQYr_/view?usp=sharing))
 
   Will provide dressing sugesstion according to today's weather conditions, each suggestion could be visualized through **Visualize** Button, and if you choose to apply, it will shown and update your home screen avatar. You could also regenerate another suggestion using **Regenerate** button
   
-- Task2: Weather
+- Task2: Weather  ([demo](https://drive.google.com/file/d/11rUJEj7s40ZoPl0h_PV7rPZWzv2HQYr_/view?usp=sharing))
   
   Will give you detailed 24h weather condiont based on you current location, which including temperature, humidities, wind directions ect. The temerature and feels like temerature will automatically updated to your home screen.
   
-- Task3: Dress Code
+- Task3: Dress Code  ([demo](https://drive.google.com/file/d/11rUJEj7s40ZoPl0h_PV7rPZWzv2HQYr_/view?usp=sharing))
   
   Will give you dressing suggestions for differnt type of dress code, you could directly visualize them and get detailed information if you click **More Inforamtion** Button.
 
+- Accessiblity: Screen Reader  ([demo](https://drive.google.com/file/d/11L2rLYuup-yPcErRbR-qraAgQ5rgEoPJ/view?usp=sharing))
+  
 - Other: Home
   
   Click location icon to retrieve latest GPS data for location and weather information update.
